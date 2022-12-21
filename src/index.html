@@ -8,7 +8,33 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
+    <div class="container">
+      <form class="js-search">
+        <div class="form-group">
+          <input type="text" class="form-control" id="searchQuery" name="query">
+          <label for="searchQuery" class="label-text"></label>
+          <button type="submit" class="btn btn-form">Пошук</button>
+        </div>
+        
+        
+  
+      </form>
+      
+      <ul class="js-articles-container"></ul>
+  
+      <button
+       type="button"
+        class="btn btn-action"
+         data-action="load-more">
+        <span class="spin"></span >
+        <span class="span-text">
+          ще
+        </span>
+      </button>
+  
+  
+    </div>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+   
   </body>
 </html>
