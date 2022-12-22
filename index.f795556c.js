@@ -1,2 +1,0 @@
-console.log("hello");document.querySelector(".js-search"),document.querySelector(".form-control"),document.querySelector(".label-text"),document.querySelector(".btn-form"),document.querySelector(".js-articles-container"),document.querySelector(".btn-action");fetch("https://newsapi.org/v2/everything?q=cat&pageSize=5&page=1",{headers:{Authorization:"002081a311064500ac33bdf8092d1261"}}).then((e=>e.json())).then((e=>e.articles));
-//# sourceMappingURL=index.f795556c.js.map
