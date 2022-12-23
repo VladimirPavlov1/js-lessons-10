@@ -1,3 +1,6 @@
+const API_KEY='002081a311064500ac33bdf8092d1261';
+const BASE_URL = 'https://newsapi.org/v2/';
+
 export default class SearchFormNews{
     constructor(){
         this.searchQuery='';
@@ -7,11 +10,11 @@ export default class SearchFormNews{
 fetchDataItem(){
      const options={
         headers:{
-            Authorization: '002081a311064500ac33bdf8092d1261',
+            Authorization: API_KEY,
         },
     }
     
-    const url= `https://newsapi.org/v2/everything?q=${this.searchQuery}&pageSize=5&page=${this.page}`
+    const url= `${BASE_URL}everything?q=${this.searchQuery}&pageSize=5&page=${this.page}`
     
     return fetch(url,options)
     .then(response=>response.json())

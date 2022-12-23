@@ -1,35 +1,60 @@
-console.log('hello')
-//API_KEY= 002081a311064500ac33bdf8092d1261
+
+
+import createMarkup from "./createCard";
+import BtnLoadMore from "./btnLoad";
+import SearchFormNews from "./classSearchForm";
+import createMarkup from "./createCard";
+
+
 
 const refs={
      
 formSearchEl:document.querySelector('.js-search'),
 inputEl:document.querySelector('.form-control'),
-labelEl:document.querySelector('.label-text'),
 btnFormEl:document.querySelector('.btn-form'),
 galleryListEl:document.querySelector('.js-articles-container'),
-btnLoadMoreEl:document.querySelector('.btn-action'),
 }
 
+
+const btnLoadMore= new BtnLoadMore({selector:'[data-action="load-more"]',
+hidden:true,});
+
+
+
+
 refs.formSearchEl.addEventListener('submit', onFormSearchSubmit);
-refs.btnLoadMoreEl.addEventListener('click',onLoadBtnClick);
+btnLoadMore.refs.button.addEventListener('click',fetchArticles);
 
 
-import SearchFormNews from "./classSearchForm";
 
 const searchFormNews =new SearchFormNews();
-console.log(searchFormNews)
+
 
 function onFormSearchSubmit(evt){
     evt.preventDefault();
-    console.log(evt);
+  
     searchFormNews.query = evt.currentTarget.elements.query.value;
-    
-    searchFormNews.resetPage();
-    searchFormNews.fetchDataItem().then(articles=>console.log(articles))
 
+    if(searchFormNews.query===''){
+        
+       return alert('пошук не коректний');  
+    }
+    btnLoadMore.show();
+    searchFormNews.resetPage();
+    clearGalleryContainer();
+        
+    fetchArticles();
 }
 
-function onLoadBtnClick(){
-    searchFormNews.fetchDataItem();
+
+function fetchArticles(){
+    btnLoadMore.disabled();
+    searchFormNews.fetchDataItem().then(articles=>{
+    refs.galleryListEl.insertAdjacentHTML('beforeend',createMarkup(articles));
+    btnLoadMore.enable();
+    })
+}
+
+function clearGalleryContainer(){
+    refs.galleryListEl.innerHTML='';
 }

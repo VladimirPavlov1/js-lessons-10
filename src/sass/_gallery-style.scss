@@ -1,0 +1,21 @@
+.gallery__item{
+    display: block;
+    padding: 20px;
+
+} 
+.thumb-img{
+    width:300px;
+    @media (min-width:768px){
+        width: 700px;
+    }
+    @media (min-width:1280px){
+        width: 1200px;
+    }
+}
+.img-title{
+    font-size: 20px;
+    color: #f100ff;
+}
+.img-text{
+    font-size: 14px;
+}
